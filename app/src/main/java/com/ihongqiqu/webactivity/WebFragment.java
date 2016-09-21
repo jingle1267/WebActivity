@@ -56,12 +56,12 @@ public class WebFragment extends Fragment {
     private void initWebView() {
         mWebView.getSettings().setDefaultTextEncodingName("utf-8");
         mWebView.getSettings().setSupportZoom(true);
-//        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setJavaScriptEnabled(true);
 //        mWebView.addJavascriptInterface(new HTMLheaderJavaScriptInterface(), "local_obj");
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mWebView.setHorizontalScrollBarEnabled(false);// 水平不显示
         mWebView.setVerticalScrollBarEnabled(false); // 垂直不显示
-//        mWebView.setWebViewClient(new MyWebViewClient());
+        mWebView.setWebViewClient(new MyWebViewClient());
 //        mWebView.setWebChromeClient(new MyWebChromeClient());
         mWebView.getSettings().setUseWideViewPort(true);
         // 安全考虑，防止密码泄漏，尤其是root过的手机
