@@ -105,6 +105,20 @@ public class WebFragment extends Fragment {
     }
 
     /**
+     * 返回事件处理
+     *
+     * @return TRUE webview返回  false 不可以返回
+     */
+    public boolean onBackPressed() {
+        if (mWebView.canGoBack()) {
+            mWebView.goBack();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
@@ -116,6 +130,7 @@ public class WebFragment extends Fragment {
      */
     public interface OnWebViewChangeListener {
         void onWebViewTitleChanged(String title);
+
         void onWebViewProgressChanged(int newProgress);
     }
 }

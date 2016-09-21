@@ -64,6 +64,8 @@ public class WebActivity extends AppCompatActivity implements WebFragment.OnWebV
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (!mWebFragment.onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 }
