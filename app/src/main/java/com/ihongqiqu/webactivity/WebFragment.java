@@ -2,7 +2,6 @@ package com.ihongqiqu.webactivity;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.webkit.WebView;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link WebFragment.OnFragmentInteractionListener} interface
+ * {@link WebFragment.OnWebViewChangeListener} interface
  * to handle interaction events.
  * Use the {@link WebFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -25,7 +24,7 @@ public class WebFragment extends Fragment {
     private String mUrl;
     private WebView mWebView;
 
-    private OnFragmentInteractionListener mListener;
+    private OnWebViewChangeListener mListener;
 
     public WebFragment() {
     }
@@ -62,7 +61,7 @@ public class WebFragment extends Fragment {
         mWebView.setHorizontalScrollBarEnabled(false);// 水平不显示
         mWebView.setVerticalScrollBarEnabled(false); // 垂直不显示
         mWebView.setWebViewClient(new MyWebViewClient());
-//        mWebView.setWebChromeClient(new MyWebChromeClient());
+        mWebView.setWebChromeClient(new MyWebChromeClient(mListener));
         mWebView.getSettings().setUseWideViewPort(true);
         // 安全考虑，防止密码泄漏，尤其是root过的手机
         mWebView.getSettings().setSavePassword(false);
@@ -95,22 +94,8 @@ public class WebFragment extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+    public void setListener(OnWebViewChangeListener listener) {
+        mListener = listener;
     }
 
     @Override
@@ -129,8 +114,8 @@ public class WebFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public interface OnWebViewChangeListener {
+        void onWebViewTitleChanged(String title);
+        void onWebViewProgressChanged(int newProgress);
     }
 }

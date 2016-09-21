@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/activity_web"
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ihongqiqu.webactivity.WebActivity">
 
-</RelativeLayout>
+    <FrameLayout
+        android:id="@+id/activity_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.ihongqiqu.webactivity.WebActivity">
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_web"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#ff0"
+        android:padding="0dp"
+        >
+    </ProgressBar>
+
+</FrameLayout>
