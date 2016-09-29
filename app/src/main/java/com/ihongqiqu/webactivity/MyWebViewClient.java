@@ -3,6 +3,7 @@ package com.ihongqiqu.webactivity;
 import android.graphics.Bitmap;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -25,7 +26,14 @@ public class MyWebViewClient extends WebViewClient {
 
     @Override
     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+        // 自定义404页面可以在这里设置
         super.onReceivedError(view, request, error);
+    }
+
+    @Override
+    public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+        // 如果需要对某些网页进行处理可以在这里处理
+        return super.shouldInterceptRequest(view, request);
     }
 
     @Override
