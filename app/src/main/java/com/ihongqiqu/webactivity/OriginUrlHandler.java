@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 
 /**
+ * 处理自定义的 scheme
+ * <p>
  * Created by zhenguo on 9/21/16.
  */
 
@@ -18,11 +20,7 @@ public class OriginUrlHandler extends UrlHandler {
     @Override
     public boolean handlerUrl(@NonNull String url) {
         if (url.toLowerCase().startsWith("http")) {
-            if (getNextUrlHandler() != null) {
-                return getNextUrlHandler().handlerUrl(url);
-            } else {
-                return false;
-            }
+            return super.handlerUrl(url);
         } else {
             // Otherwise allow the OS to handle things like tel, mailto, etc.
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));

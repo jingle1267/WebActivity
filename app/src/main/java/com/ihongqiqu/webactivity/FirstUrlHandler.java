@@ -19,12 +19,7 @@ public class FirstUrlHandler extends UrlHandler {
         if (url.contains("http://ihongqiqu.com/archives/")) {
             Toast.makeText(mContext, url, Toast.LENGTH_SHORT).show();
             return true;
-        } else {
-            if (getNextUrlHandler() != null) {
-                return getNextUrlHandler().handlerUrl(url);
-            } else {
-                return false;
-            }
         }
+        return super.handlerUrl(url);
     }
 }

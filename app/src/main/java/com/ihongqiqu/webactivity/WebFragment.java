@@ -3,6 +3,7 @@ package com.ihongqiqu.webactivity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class WebFragment extends Fragment {
      * @param url url 链接
      * @return A new instance of fragment WebFragment.
      */
-    public static WebFragment newInstance(String url) {
+    public static WebFragment newInstance(@NonNull String url) {
         WebFragment fragment = new WebFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM_URL, url);
@@ -55,11 +56,14 @@ public class WebFragment extends Fragment {
     private void initWebView() {
         mWebView.getSettings().setDefaultTextEncodingName("utf-8");
         mWebView.getSettings().setSupportZoom(true);
+        // 设置是否支持执行JS，如果设置为true会存在XSS攻击风险
         mWebView.getSettings().setJavaScriptEnabled(true);
-//        mWebView.addJavascriptInterface(new HTMLheaderJavaScriptInterface(), "local_obj");
+        // mWebView.addJavascriptInterface(new HTMLheaderJavaScriptInterface(), "local_obj");
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        mWebView.setHorizontalScrollBarEnabled(false);// 水平不显示
-        mWebView.setVerticalScrollBarEnabled(false); // 垂直不显示
+        // 水平不显示
+        mWebView.setHorizontalScrollBarEnabled(false);
+        // 垂直不显示
+        mWebView.setVerticalScrollBarEnabled(false);
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient(mListener));
         mWebView.getSettings().setUseWideViewPort(true);
@@ -74,12 +78,12 @@ public class WebFragment extends Fragment {
         mWebView.getSettings().setDatabaseEnabled(true);
         String dir = getActivity().getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
 
-        //启用地理定位
+        // 启用地理定位
         mWebView.getSettings().setGeolocationEnabled(true);
-        //设置定位的数据库路径
+        // 设置定位的数据库路径
         mWebView.getSettings().setGeolocationDatabasePath(dir);
 
-        //最重要的方法，一定要设置，这就是出不来的主要原因
+        // 最重要的方法，一定要设置，这就是出不来的主要原因
         mWebView.getSettings().setDomStorageEnabled(true);
 
         mWebView.loadUrl(mUrl);
@@ -129,6 +133,7 @@ public class WebFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnWebViewChangeListener {
+
         void onWebViewTitleChanged(String title);
 
         void onWebViewProgressChanged(int newProgress);

@@ -1,6 +1,7 @@
 package com.ihongqiqu.webactivity;
 
 import android.content.Context;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 
 /**
@@ -12,13 +13,11 @@ import android.support.annotation.NonNull;
 public abstract class UrlHandler {
 
     protected Context mContext;
-    private UrlHandler nextUrlHandler;
-
+    private UrlHandler nextUrlHandler = null;
 
     public UrlHandler(Context context) {
         mContext = context;
     }
-
 
     public void setContext(Context context) {
         mContext = context;
@@ -32,5 +31,11 @@ public abstract class UrlHandler {
         this.nextUrlHandler = nextUrlHandler;
     }
 
-    public abstract boolean handlerUrl(@NonNull String url);
+    @CallSuper
+    public boolean handlerUrl(@NonNull String url) {
+        if (getNextUrlHandler() != null) {
+            return getNextUrlHandler().handlerUrl(url);
+        }
+        return false;
+    }
 }
