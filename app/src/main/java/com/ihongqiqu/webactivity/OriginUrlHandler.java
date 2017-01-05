@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 
 /**
- * 处理自定义的 scheme
+ * 处理通用的 scheme
  * <p>
  * Created by zhenguo on 9/21/16.
  */

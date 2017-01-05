@@ -41,6 +41,7 @@ public class MyWebViewClient extends WebViewClient {
         FirstUrlHandler firstUrlHandler = new FirstUrlHandler(view.getContext());
         OriginUrlHandler originUrlHandler = new OriginUrlHandler(view.getContext());
         firstUrlHandler.setNextUrlHandler(originUrlHandler);
+        // 此处可以设置自己的 UrlHandler 处理
         boolean isHandle = firstUrlHandler.handlerUrl(url);
         if (isHandle) {
             return true;

@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.widget.Toast;
 
 /**
+ * 拦截需要处理的url
+ * <p>
  * Created by zhenguo on 9/21/16.
  */
 
