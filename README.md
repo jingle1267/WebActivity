@@ -1,5 +1,6 @@
 # WebActivity
-Android WebActivity
+
+  Android WebActivity
 
 ### 原生和 H5 介绍
 
@@ -16,6 +17,16 @@ Android WebActivity
 ### 实现
   
   Android 中使用 WebView 来显示网页。WebViewClient 帮助 WebView 处理各种通知、请求事件。WebChromeClient 主要辅助 WebView 处理 Javascript 的对话框、网站图标、网站 title、加载进度等。
+
+#### 使用
+
+  简单使用方法调用如下：
+
+```java
+    WebActivity.launch(this, "http://ihongqiqu.com", "标题");
+```
+
+#### 实现介绍
 
   UrlHandler 负责对 url 进行拦截。独立的业务可以实现自己的 UrlHandler，只需要在 MyWebViewClient 修改一下方法：
   
