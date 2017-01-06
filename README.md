@@ -4,21 +4,23 @@
 
 ### 原生和 H5 介绍
 
-  原生应用的用户体验不错，但是开发成本相对较高。原生应用的灵活性相对页不如 Web 页，切 Web 页相对原生有更强的控制力。原生应用出了 Bug，如果没有热补丁等热修复技术，应用就需要重新发版上线。Web 页面的控制权都在服务器端，故出了问题，在服务器端修复问题，就把线上的 Bug 修复完了。下图列出了它们的优势和劣势(包括混合型应用)：
-  
-  ![Native VS H5](http://ihongqiqu.com/sliders/assets/images/Android-Intro/NativeVSH5.png)
-  
+  原生应用的用户体验不错，但是开发成本相对较高。原生应用的灵活性相对页不如 Web 页，切 Web 页相对原生有更强的控制力。原生应用出了 Bug，如果没有热补丁等热修复技术，应用就需要重新发版上线。Web 页面的控制权都在服务器端，故出了问题，在服务器端修复问题，就把线上的 Bug 修复完了。
+
+下图列出了它们的优势和劣势(包括混合型应用)：
+
+![Native VS Hybrid VS H5](http://ihongqiqu.com/sliders/assets/images/Android-Intro/NativeVSH5.png)
+
   原生和 Web 页各有优势和劣势，混合应用顺势而生。在原生应用中显示 Web 页也成为很流行的一种策略，即保证了主体功能的用户体验，又包含了 Web 页的灵活性和高控制性。
 
-### 现状  
-  
+### 现状
+
   现在，我们的应用中很多都需要能够支持显示 H5 页面。对于活动页和变动比较频繁以及尚在尝试阶段的需求，一般都会先用 H5 来实现。我们原生应用显示 H5 页面也称为应用的一个强需求，故做此组件。
 
 ### 实现
-  
+
   Android 中使用 WebView 来显示网页。WebViewClient 帮助 WebView 处理各种通知、请求事件。WebChromeClient 主要辅助 WebView 处理 Javascript 的对话框、网站图标、网站 title、加载进度等。
 
-#### 使用
+#### 快速使用
 
   简单使用方法调用如下：
 
@@ -26,10 +28,10 @@
     WebActivity.launch(this, "http://ihongqiqu.com", "标题");
 ```
 
-#### 实现介绍
+#### 原理介绍
 
-  UrlHandler 负责对 url 进行拦截。独立的业务可以实现自己的 UrlHandler，只需要在 MyWebViewClient 修改一下方法：
-  
+  UrlHandler 负责对 url 进行拦截。**独立的业务可以实现自己的 UrlHandler**。然后只需要在 MyWebViewClient 修改一下方法：
+
 ```java
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -85,3 +87,7 @@
         mWebView.loadUrl(mUrl);
     }
 ```
+
+#### 源码
+
+https://github.com/jingle1267/WebActivity
