@@ -1,8 +1,10 @@
-package com.ihongqiqu.webactivity;
+package com.ihongqiqu.webactivity.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import com.ihongqiqu.webactivity.R;
+import com.ihongqiqu.webactivity.WebActivity;
 
 public class MainActivity extends AppCompatActivity {
 

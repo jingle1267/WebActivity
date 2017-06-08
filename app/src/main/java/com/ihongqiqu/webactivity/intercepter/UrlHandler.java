@@ -1,4 +1,4 @@
-package com.ihongqiqu.webactivity;
+package com.ihongqiqu.webactivity.intercepter;
 
 import android.content.Context;
 import android.support.annotation.CallSuper;
