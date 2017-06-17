@@ -88,6 +88,10 @@
     }
 ```
 
+PS:
+
+出于安全考虑在 manifest 中添加 android:exported="false" 是很有必要的
+
 #### 源码
 
 https://github.com/jingle1267/WebActivity
