@@ -8,7 +8,7 @@
 
 下图列出了它们的优势和劣势(包括混合型应用)：
 
-![Native VS Hybrid VS H5](http://ihongqiqu.com/sliders/assets/images/Android-Intro/NativeVSH5.png)
+![Native VS Hybrid VS H5](http://94275.cn/sliders/assets/images/Android-Intro/NativeVSH5.png)
 
   原生和 Web 页各有优势和劣势，混合应用顺势而生。在原生应用中显示 Web 页也成为很流行的一种策略，即保证了主体功能的用户体验，又包含了 Web 页的灵活性和高控制性。
 
@@ -25,7 +25,7 @@
   简单使用方法调用如下：
 
 ```java
-    WebActivity.launch(this, "http://ihongqiqu.com", "标题");
+    WebActivity.launch(this, "http://94275.cn", "标题");
 ```
 
 #### 原理介绍
